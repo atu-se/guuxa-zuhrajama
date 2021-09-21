@@ -3,10 +3,16 @@ import socket
 HOST = '127.0.0.1'
 PORT = 1027
 BUFFER_SIZE = 512
+HOST = '127.0.0.1'
+PORT = 51630
+HOST = '127.0.0.1'
+PORT = 51633
+HOST = '127.0.0.1'
+PORT = 51634
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
-    s.listen()
+    s.listen(4)
 
     conn, addr = s.accept()
     with conn:

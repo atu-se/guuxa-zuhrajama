@@ -1,4 +1,5 @@
 import socket
+serv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 HOST = '127.0.0.1'
 PORT = 1027
@@ -15,6 +16,15 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.listen(4)
 
     conn, addr = s.accept()
+    from_client = ''
+    while True:
+        data = conn.recv(1027)
+        if not data: break
+        from_client += data
+        print from_client
+        conn.send("I am SERVER<br>")
+    conn.close()
+    print 'client disconnected'
     with conn:
         print('Connection opened:', addr)
 
